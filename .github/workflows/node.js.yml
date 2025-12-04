@@ -62,12 +62,11 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
         with:
-          path: ./out
-          name: github-pages
-          retention-days: 1
+          path: _site/
 
   deploy:
     environment:
